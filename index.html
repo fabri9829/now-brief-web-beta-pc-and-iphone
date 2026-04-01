@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumen Galaxy AI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: linear-gradient(135deg, #e6f9f5 0%, #e8f4f8 50%, #d8ecf9 100%);
+            height: 100vh;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.02;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            z-index: 1;
+        }
+
+        @keyframes text-sweep-premium {
+            0% { background-position: 150% 0; }
+            100% { background-position: -150% 0; }
+        }
+
+        @keyframes card-sweep-premium {
+            0% { transform: translate3d(-120%, 0, 0) skewX(-20deg); }
+            100% { transform: translate3d(180%, 0, 0) skewX(-20deg); }
+        }
+
+        @keyframes samsung-loading-sweep {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+
+        @keyframes card-shimmer-bg {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .shimmer-text-base {
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            transition: -webkit-text-fill-color 1.5s ease-in-out;
+            will-change: background-position;
+            backface-visibility: hidden;
+        }
+
+        .text-shimmer {
+            background-image: linear-gradient(90deg, 
+                #0f172a 0%, 
+                #0f172a 40%, 
+                #3b82f6 46%, 
+                #ffffff 50%, 
+                #3b82f6 54%, 
+                #0f172a 60%, 
+                #0f172a 100%);
+            animation: text-sweep-premium 4.0s 5 linear forwards;
+        }
+
+        .subtext-shimmer {
+            background-image: linear-gradient(90deg, 
+                rgba(15, 23, 42, 0.6) 0%, 
+                rgba(15, 23, 42, 0.6) 40%, 
+                rgba(59, 130, 246, 0.4) 47%, 
+                rgba(255, 255, 255, 0.9) 50%, 
+                rgba(59, 130, 246, 0.4) 53%, 
+                rgba(15, 23, 42, 0.6) 60%, 
+                rgba(15, 23, 42, 0.6) 100%);
+            animation: text-sweep-premium 4.0s 5 linear forwards;
+            animation-delay: 0.4s;
+        }
+
+        .samsung-shimmer-text {
+            background: linear-gradient(
+                90deg, 
+                #034EA2 0%, 
+                #00f2fe 25%, 
+                #ffffff 50%, 
+                #00f2fe 75%, 
+                #034EA2 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: samsung-loading-sweep 1.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .samsung-card-shimmer {
+            background: linear-gradient(
+                110deg,
+                rgba(255, 255, 255, 0.7) 0%,
+                rgba(3, 78, 162, 0.05) 20%,
+                rgba(0, 242, 254, 0.1) 40%,
+                rgba(255, 255, 255, 0.8) 50%,
+                rgba(0, 242, 254, 0.1) 60%,
+                rgba(3, 78, 162, 0.05) 80%,
+                rgba(255, 255, 255, 0.7) 100%
+            ) !important;
+            background-size: 200% 100% !important;
+            animation: card-shimmer-bg 3s infinite linear;
+        }
+
+        .text-shimmer-finished { -webkit-text-fill-color: #0f172a; background: none; }
+        .subtext-shimmer-finished { -webkit-text-fill-color: rgba(15, 23, 42, 0.6); background: none; }
+
+        .text-shimmer-finished-night { -webkit-text-fill-color: #f8fafc; background: none; }
+        .subtext-shimmer-finished-night { -webkit-text-fill-color: rgba(248, 250, 252, 0.7); background: none; }
+
+        .text-shimmer-night {
+            background-image: linear-gradient(90deg, 
+                #f8fafc 0%, 
+                #f8fafc 40%, 
+                #3b82f6 46%, 
+                #ffffff 50%, 
+                #3b82f6 54%, 
+                #f8fafc 60%, 
+                #f8fafc 100%);
+            animation: text-sweep-premium 4.0s 5 linear forwards;
+        }
+
+        .subtext-shimmer-night {
+            background-image: linear-gradient(90deg, 
+                rgba(248, 250, 252, 0.7) 0%, 
+                rgba(248, 250, 252, 0.7) 40%, 
+                rgba(59, 130, 246, 0.4) 47%, 
+                rgba(255, 255, 255, 0.9) 50%, 
+                rgba(59, 130, 246, 0.4) 53%, 
+                rgba(248, 250, 252, 0.7) 60%, 
+                rgba(248, 250, 252, 0.7) 100%);
+            animation: text-sweep-premium 4.0s 5 linear forwards;
+            animation-delay: 0.4s;
+        }
+
+        @keyframes background-move {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .bg-morning { 
+            background: linear-gradient(135deg, #FFDEE9, #B5FFFC, #FF9A9E); 
+            background-size: 200% 200%;
+            animation: background-move 15s ease infinite;
+        }
+        .bg-day { 
+            background: linear-gradient(135deg, #8BC6EC, #9599E2, #00D4FF); 
+            background-size: 200% 200%;
+            animation: background-move 15s ease infinite;
+        }
+        .bg-evening { 
+            background: linear-gradient(135deg, #FBAB7E, #F7CE68, #FF6B6B); 
+            background-size: 200% 200%;
+            animation: background-move 15s ease infinite;
+        }
+        .bg-night { 
+            background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+            background-size: 200% 200%;
+            animation: background-move 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        .bg-night::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 50% 30%, #1e293b 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, #0f172a 0%, transparent 50%);
+            filter: blur(80px);
+            opacity: 0.6;
+            z-index: -1;
+        }
+
+        .shimmer-active {
+            position: relative;
+            overflow: hidden;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
+        }
+
+        .shimmer-active::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                rgba(255, 255, 255, 0) 0%, 
+                rgba(255, 255, 255, 0.1) 42%, 
+                rgba(255, 255, 255, 0.7) 50%, 
+                rgba(255, 255, 255, 0.1) 58%, 
+                rgba(255, 255, 255, 0) 100%);
+            animation: card-sweep-premium 4.0s 5 linear forwards;
+            animation-delay: 0.4s;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 1;
+            transition: opacity 1.5s ease-out;
+        }
+
+        .shimmer-finishing::after {
+            opacity: 0;
+        }
+
+        .liquid-glass-card {
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(255, 255, 255, 0.4) !important;
+            border: 1px solid rgba(255, 255, 255, 0.5) !important;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07) !important;
+        }
+
+        .dynamic-theme-active::after {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(255,255,255,0.1) 0%, transparent 60%);
+            pointer-events: none;
+            z-index: 5;
+            mix-blend-mode: overlay;
+        }
+
+        @keyframes content-slide-up {
+            from { opacity: 0; transform: translate3d(0, 30px, 0); }
+            to { opacity: 1; transform: translate3d(0, 0, 0); }
+        }
+
+        .delayed-content {
+            opacity: 0;
+            animation: content-slide-up 2s cubic-bezier(0.19, 1, 0.22, 1) 0.5s forwards;
+            backface-visibility: hidden;
+        }
+
+        @keyframes wave-pulse {
+            0% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.5); opacity: 0; }
+            100% { transform: scale(1); opacity: 0; }
+        }
+
+        .wave-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .wave-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 2px solid #3b82f6;
+            border-radius: 50%;
+            animation: wave-pulse 2s infinite;
+        }
+
+        .wave-ring:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        .wave-ring:nth-child(3) {
+            animation-delay: 1s;
+        }
+
+        ::-webkit-scrollbar { display: none; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+        img {
+            transition: opacity 0.5s ease-in-out;
+            opacity: 1;
+            backface-visibility: hidden;
+        }
+        img[src=""] {
+            opacity: 0;
+        }
+    </style>
+    <link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+</body>
+</html>

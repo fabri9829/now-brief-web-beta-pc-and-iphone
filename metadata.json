@@ -1,0 +1,7 @@
+{
+  "name": "Now Brief",
+  "description": "Una aplicación de resumen diario al estilo Samsung One UI que proporciona actualizaciones personalizadas de clima, noticias y medios para cualquier ubicación del mundo utilizando Galaxy AI.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

@@ -1,0 +1,1 @@
+// This file has been removed as focus score is mock data.
